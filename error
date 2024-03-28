@@ -1,0 +1,140 @@
+2024-03-28T15:26:22Z DEBUG   [17/30]: requesting RA certificate from CA
+2024-03-28T15:26:22Z DEBUG Starting external process
+2024-03-28T15:26:22Z DEBUG args=['/usr/bin/openssl', 'pkcs7', '-inform', 'DER', '-print_certs', '-out', '/var/lib/ipa/tmpzohnbt8x']
+2024-03-28T15:26:22Z DEBUG Process finished, return code=0
+2024-03-28T15:26:22Z DEBUG stdout=
+2024-03-28T15:26:22Z DEBUG stderr=
+2024-03-28T15:26:22Z DEBUG Starting external process
+2024-03-28T15:26:22Z DEBUG args=['/usr/bin/openssl', 'pkcs12', '-nokeys', '-clcerts', '-in', '/root/ca-agent.p12', '-out', '/var/lib/ipa/tmp9lk304vz', '-passin', 'file:/tmp/tmp4z3cyt00']
+2024-03-28T15:26:22Z DEBUG Process finished, return code=0
+2024-03-28T15:26:22Z DEBUG stdout=
+2024-03-28T15:26:22Z DEBUG stderr=
+2024-03-28T15:26:22Z DEBUG Starting external process
+2024-03-28T15:26:22Z DEBUG args=['/usr/bin/openssl', 'pkcs12', '-nocerts', '-in', '/root/ca-agent.p12', '-out', '/var/lib/ipa/tmpdmbxzx35', '-passin', 'file:/tmp/tmpqoy9bgxk', '-nodes']
+2024-03-28T15:26:23Z DEBUG Process finished, return code=0
+2024-03-28T15:26:23Z DEBUG stdout=
+2024-03-28T15:26:23Z DEBUG stderr=
+2024-03-28T15:26:31Z DEBUG certmonger request is in state 'GENERATING_KEY_PAIR'
+2024-03-28T15:26:31Z DEBUG certmonger request is in state 'SUBMITTING'
+2024-03-28T15:26:32Z DEBUG certmonger request is in state 'PRE_SAVE_CERT'
+2024-03-28T15:26:33Z DEBUG certmonger request is in state 'POST_SAVED_CERT'
+2024-03-28T15:26:36Z DEBUG certmonger request is in state 'MONITORING'
+2024-03-28T15:26:36Z DEBUG Cert request 20240328152630 was successful
+2024-03-28T15:26:36Z DEBUG Starting external process
+2024-03-28T15:26:36Z DEBUG args=['/usr/sbin/selinuxenabled']
+2024-03-28T15:26:36Z DEBUG Process finished, return code=1
+2024-03-28T15:26:36Z DEBUG stdout=
+2024-03-28T15:26:36Z DEBUG stderr=
+2024-03-28T15:26:36Z DEBUG Starting external process
+2024-03-28T15:26:36Z DEBUG args=['/usr/sbin/selinuxenabled']
+2024-03-28T15:26:36Z DEBUG Process finished, return code=1
+2024-03-28T15:26:36Z DEBUG stdout=
+2024-03-28T15:26:36Z DEBUG stderr=
+2024-03-28T15:26:36Z DEBUG Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/ipaserver/install/service.py", line 686, in start_creation
+    run_step(full_msg, method)
+  File "/usr/lib/python3/dist-packages/ipaserver/install/service.py", line 672, in run_step
+    method()
+  File "/usr/lib/python3/dist-packages/ipaserver/install/cainstance.py", line 936, in __request_ra_certificate
+    self.ra_cert = x509.load_certificate_from_file(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/ipalib/x509.py", line 465, in load_certificate_from_file
+    return load_pem_x509_certificate(f.read())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/ipalib/x509.py", line 427, in load_pem_x509_certificate
+    return IPACertificate(
+           ^^^^^^^^^^^^^^^
+TypeError: Can't instantiate abstract class IPACertificate with abstract methods not_valid_after_utc, not_valid_before_utc
+
+2024-03-28T15:26:36Z DEBUG   [error] TypeError: Can't instantiate abstract class IPACertificate with abstract methods not_valid_after_utc, not_valid_before_utc
+2024-03-28T15:26:36Z DEBUG Removing /root/.dogtag/pki-tomcat/ca
+2024-03-28T15:26:36Z DEBUG   File "/usr/lib/python3/dist-packages/ipapython/admintool.py", line 180, in execute
+    return_value = self.run()
+                   ^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/ipapython/install/cli.py", line 344, in run
+    return cfgr.run()
+           ^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 360, in run
+    return self.execute()
+           ^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 386, in execute
+    for rval in self._executor():
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 435, in __runner
+    exc_handler(exc_info)
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 468, in _handle_execute_exception
+    self._handle_exception(exc_info)
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 458, in _handle_exception
+    six.reraise(*exc_info)
+  File "/usr/lib/python3/dist-packages/six.py", line 719, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 425, in __runner
+    step()
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 419, in step_next
+    return next(self.__gen)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/ipapython/install/util.py", line 81, in run_generator_with_yield_from
+    six.reraise(*exc_info)
+  File "/usr/lib/python3/dist-packages/six.py", line 719, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/ipapython/install/util.py", line 59, in run_generator_with_yield_from
+    value = gen.send(prev_value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 663, in _configure
+    next(executor)
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 435, in __runner
+    exc_handler(exc_info)
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 468, in _handle_execute_exception
+    self._handle_exception(exc_info)
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 526, in _handle_exception
+    self.__parent._handle_exception(exc_info)
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 458, in _handle_exception
+    six.reraise(*exc_info)
+  File "/usr/lib/python3/dist-packages/six.py", line 719, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 523, in _handle_exception
+    super(ComponentBase, self)._handle_exception(exc_info)
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 458, in _handle_exception
+    six.reraise(*exc_info)
+  File "/usr/lib/python3/dist-packages/six.py", line 719, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 425, in __runner
+    step()
+  File "/usr/lib/python3/dist-packages/ipapython/install/core.py", line 419, in step_next
+    return next(self.__gen)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/ipapython/install/util.py", line 81, in run_generator_with_yield_from
+    six.reraise(*exc_info)
+  File "/usr/lib/python3/dist-packages/six.py", line 719, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/ipapython/install/util.py", line 59, in run_generator_with_yield_from
+    value = gen.send(prev_value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/ipapython/install/common.py", line 65, in _install
+    for unused in self._installer(self.parent):
+  File "/usr/lib/python3/dist-packages/ipaserver/install/server/__init__.py", line 566, in main
+    master_install(self)
+  File "/usr/lib/python3/dist-packages/ipaserver/install/server/install.py", line 278, in decorated
+    func(installer)
+  File "/usr/lib/python3/dist-packages/ipaserver/install/server/install.py", line 914, in install
+    ca.install_step_0(False, None, options, custodia=custodia)
+  File "/usr/lib/python3/dist-packages/ipaserver/install/ca.py", line 404, in install_step_0
+    ca.configure_instance(
+  File "/usr/lib/python3/dist-packages/ipaserver/install/cainstance.py", line 506, in configure_instance
+    self.start_creation(runtime=runtime)
+  File "/usr/lib/python3/dist-packages/ipaserver/install/service.py", line 686, in start_creation
+    run_step(full_msg, method)
+  File "/usr/lib/python3/dist-packages/ipaserver/install/service.py", line 672, in run_step
+    method()
+  File "/usr/lib/python3/dist-packages/ipaserver/install/cainstance.py", line 936, in __request_ra_certificate
+    self.ra_cert = x509.load_certificate_from_file(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/ipalib/x509.py", line 465, in load_certificate_from_file
+    return load_pem_x509_certificate(f.read())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/ipalib/x509.py", line 427, in load_pem_x509_certificate
+    return IPACertificate(
+           ^^^^^^^^^^^^^^^
+
+2024-03-28T15:26:36Z DEBUG The ipa-server-install command failed, exception: TypeError: Can't instantiate abstract class IPACertificate with abstract methods not_valid_after_utc, not_valid_before_utc
+2024-03-28T15:26:36Z ERROR Can't instantiate abstract class IPACertificate with abstract methods not_valid_after_utc, not_valid_before_utc
+2024-03-28T15:26:36Z ERROR The ipa-server-install command failed. See /var/log/ipaserver-install.log for more information
